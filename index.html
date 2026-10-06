@@ -1,332 +1,365 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-PE">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Librerías Andinas</title>
-<meta name="description" content="Librerías Andinas: libros, útiles escolares y de oficina con envíos a todo el Perú.">
+<meta name="description" content="Librerías Andinas: libros escolares, universitarios, literatura peruana y útiles. Envíos a todo el Perú.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --terracota:#b4462b; --terracota-dark:#8e3420;
-    --indigo:#1f2a44; --mostaza:#e0a526; --crema:#fbf6ee; --arena:#f1e6d4;
-    --texto:#2a2522; --suave:#6b625b; --blanco:#fff; --verde-wa:#25d366;
-    --radio:14px; --sombra:0 10px 30px rgba(31,42,68,.12);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:Inter,system-ui,sans-serif;color:var(--texto);background:var(--crema);line-height:1.6}
-  h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.15;color:var(--indigo)}
-  a{color:inherit}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+:root{
+  --papel:#f6f0e4; --papel-2:#efe6d3; --tinta:#1f2a24; --tinta-2:#4a5650;
+  --terracota:#b5502f; --terracota-2:#9a3f22; --verde:#2f5d4a; --oro:#d9a441;
+  --blanco:#fffdf8; --borde:#dccfb6;
+  --serif:"Fraunces",Georgia,serif; --sans:"Inter",system-ui,sans-serif;
+  --radio:14px; --sombra:0 10px 30px rgba(31,42,36,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--papel);color:var(--tinta);line-height:1.6}
+img{max-width:100%}
+a{color:inherit}
+.wrap{width:min(1120px,100% - 32px);margin-inline:auto}
 
-  /* Franja andina (patrón textil) */
-  .tejido{height:14px;background:
-    repeating-linear-gradient(135deg,var(--terracota) 0 10px,transparent 10px 20px),
-    repeating-linear-gradient(45deg,var(--mostaza) 0 10px,var(--indigo) 10px 20px)}
+/* Franja de tejido andino */
+.tejido{height:12px;background:
+  repeating-linear-gradient(90deg,var(--terracota) 0 18px,var(--oro) 18px 24px,var(--verde) 24px 42px,var(--oro) 42px 48px);}
+.tejido.fino{height:6px}
 
-  /* Header */
-  header{position:sticky;top:0;z-index:50;background:rgba(251,246,238,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--arena)}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-  .logo{display:flex;align-items:center;gap:10px;font-family:Fraunces,serif;font-weight:800;font-size:1.25rem;color:var(--indigo);text-decoration:none}
-  .logo svg{flex:none}
-  .menu{display:flex;gap:26px;list-style:none}
-  .menu a{text-decoration:none;font-weight:500;color:var(--suave)}
-  .menu a:hover{color:var(--terracota)}
-  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--terracota);color:#fff;border:0;border-radius:999px;padding:12px 22px;font-weight:600;font-size:.95rem;text-decoration:none;cursor:pointer;transition:.2s}
-  .btn:hover{background:var(--terracota-dark);transform:translateY(-1px)}
-  .btn.sec{background:transparent;color:var(--indigo);border:2px solid var(--indigo)}
-  .btn.sec:hover{background:var(--indigo);color:#fff}
-  .btn.wa{background:var(--verde-wa);color:#073b1d}
+/* Header */
+header{position:sticky;top:0;z-index:20;background:rgba(246,240,228,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--borde)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-icon{width:40px;height:40px;border-radius:10px;background:var(--verde);display:grid;place-items:center;color:var(--oro);font-family:var(--serif);font-weight:700;font-size:1.3rem}
+.logo b{font-family:var(--serif);font-size:1.25rem;display:block;line-height:1.1}
+.logo small{font-size:.72rem;color:var(--tinta-2);letter-spacing:.08em;text-transform:uppercase}
+.menu{display:flex;gap:26px;list-style:none}
+.menu a{text-decoration:none;font-weight:500;font-size:.95rem;color:var(--tinta-2)}
+.menu a:hover{color:var(--terracota)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;border:0;font:600 .95rem var(--sans);cursor:pointer;text-decoration:none;transition:.2s}
+.btn-prim{background:var(--terracota);color:#fff}
+.btn-prim:hover{background:var(--terracota-2)}
+.btn-sec{background:transparent;color:var(--tinta);border:1.5px solid var(--tinta)}
+.btn-sec:hover{background:var(--tinta);color:var(--papel)}
+.burger{display:none;background:none;border:0;font-size:1.6rem;cursor:pointer;color:var(--tinta)}
 
-  /* Hero */
-  .hero{padding:72px 0 64px;background:
-    radial-gradient(circle at 85% 20%,rgba(224,165,38,.25),transparent 40%),
-    radial-gradient(circle at 10% 90%,rgba(180,70,43,.15),transparent 40%)}
-  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
-  .tag{display:inline-block;background:var(--arena);color:var(--terracota-dark);font-weight:600;font-size:.8rem;padding:6px 12px;border-radius:999px;letter-spacing:.04em;text-transform:uppercase}
-  .hero h1{font-size:clamp(2.2rem,5vw,3.6rem);margin:16px 0}
-  .hero h1 em{font-style:normal;color:var(--terracota)}
-  .hero p{font-size:1.1rem;color:var(--suave);max-width:520px}
-  .hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-  .stats{display:flex;gap:32px;margin-top:36px;flex-wrap:wrap}
-  .stats b{display:block;font-family:Fraunces,serif;font-size:1.8rem;color:var(--indigo)}
-  .stats span{font-size:.85rem;color:var(--suave)}
-  .estante{background:var(--indigo);border-radius:24px;padding:28px;box-shadow:var(--sombra);position:relative;overflow:hidden}
-  .estante::after{content:"";position:absolute;inset:auto 0 0 0;height:12px;background:repeating-linear-gradient(90deg,var(--mostaza) 0 14px,var(--terracota) 14px 28px)}
-  .libros{display:flex;align-items:flex-end;gap:6px;height:220px;border-bottom:6px solid #3a4666;padding:0 6px}
-  .libro{flex:1;border-radius:4px 4px 0 0;position:relative}
-  .libro::before{content:"";position:absolute;left:20%;right:20%;top:14%;height:3px;background:rgba(255,255,255,.5)}
-  .estante p{color:#cfd6e6;margin-top:18px;font-size:.95rem}
-  .estante p b{color:var(--mostaza)}
+/* Hero */
+.hero{padding:72px 0 56px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.etiqueta{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--terracota);margin-bottom:14px}
+h1,h2,h3{font-family:var(--serif);line-height:1.12;font-weight:700}
+h1{font-size:clamp(2.3rem,5.2vw,4rem);margin-bottom:20px}
+h1 em{font-style:italic;color:var(--verde)}
+.hero p{font-size:1.1rem;color:var(--tinta-2);max-width:520px;margin-bottom:28px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.datos{display:flex;gap:32px;margin-top:36px;flex-wrap:wrap}
+.datos b{font-family:var(--serif);font-size:1.8rem;color:var(--terracota);display:block;line-height:1}
+.datos span{font-size:.85rem;color:var(--tinta-2)}
 
-  section{padding:72px 0}
-  .sec-head{text-align:center;max-width:640px;margin:0 auto 40px}
-  .sec-head h2{font-size:clamp(1.8rem,3.5vw,2.5rem);margin:10px 0}
-  .sec-head p{color:var(--suave)}
+/* Estante de libros (CSS) */
+.estante{position:relative;padding:28px 24px 0;background:var(--papel-2);border-radius:var(--radio);border:1px solid var(--borde)}
+.libros{display:flex;align-items:flex-end;gap:6px;height:260px}
+.lomo{flex:1;border-radius:4px 4px 0 0;position:relative;display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;transform:rotate(180deg);color:#fff;font:600 .78rem var(--sans);letter-spacing:.06em;box-shadow:inset -4px 0 0 rgba(0,0,0,.12)}
+.lomo:nth-child(1){height:88%;background:var(--verde)}
+.lomo:nth-child(2){height:72%;background:var(--terracota)}
+.lomo:nth-child(3){height:96%;background:var(--tinta)}
+.lomo:nth-child(4){height:80%;background:var(--oro);color:var(--tinta)}
+.lomo:nth-child(5){height:66%;background:#7a4b8c}
+.lomo:nth-child(6){height:92%;background:var(--terracota-2)}
+.lomo:nth-child(7){height:76%;background:#3d6f8f}
+.repisa{height:16px;background:#8a5a3b;border-radius:3px;margin:0 -24px}
+.sello{position:absolute;top:-18px;right:-14px;background:var(--oro);color:var(--tinta);width:96px;height:96px;border-radius:50%;display:grid;place-items:center;text-align:center;font:700 .78rem/1.2 var(--sans);transform:rotate(12deg);box-shadow:var(--sombra)}
 
-  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-  .card{background:#fff;border-radius:var(--radio);padding:26px;box-shadow:var(--sombra);border-top:5px solid var(--terracota);transition:.2s}
-  .card:nth-child(2n){border-top-color:var(--mostaza)}
-  .card:nth-child(3n){border-top-color:var(--indigo)}
-  .card:hover{transform:translateY(-4px)}
-  .card .ico{font-size:2rem}
-  .card h3{margin:10px 0 6px;font-size:1.2rem}
-  .card p{color:var(--suave);font-size:.93rem}
+/* Secciones */
+section{padding:72px 0}
+.titulo-sec{max-width:640px;margin-bottom:40px}
+.titulo-sec h2{font-size:clamp(1.8rem,3.4vw,2.6rem);margin-bottom:10px}
+.titulo-sec p{color:var(--tinta-2)}
+.blanco{background:var(--blanco);border-block:1px solid var(--borde)}
 
-  .servicios{background:var(--indigo);color:#e6e9f2}
-  .servicios h2,.servicios h3{color:#fff}
-  .servicios .sec-head p{color:#b9c2d8}
-  .serv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-  .serv{border:1px solid rgba(255,255,255,.15);border-radius:var(--radio);padding:24px;background:rgba(255,255,255,.04)}
-  .serv h3{font-size:1.15rem;margin-bottom:6px}
-  .serv p{font-size:.93rem;color:#b9c2d8}
-  .serv .num{font-family:Fraunces,serif;color:var(--mostaza);font-size:1.4rem;font-weight:800}
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.cat{background:var(--papel);border:1px solid var(--borde);border-radius:var(--radio);padding:26px 22px;transition:.2s}
+.cat:hover{transform:translateY(-4px);box-shadow:var(--sombra);border-color:var(--terracota)}
+.cat .ico{font-size:2rem;margin-bottom:12px}
+.cat h3{font-size:1.25rem;margin-bottom:6px}
+.cat p{font-size:.92rem;color:var(--tinta-2)}
 
-  .nosotros-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-  .nosotros-grid ul{list-style:none;margin-top:18px}
-  .nosotros-grid li{padding:8px 0 8px 30px;position:relative}
-  .nosotros-grid li::before{content:"◆";position:absolute;left:0;color:var(--terracota)}
-  .sedes{display:grid;gap:14px}
-  .sede{background:#fff;border-radius:var(--radio);padding:18px 20px;box-shadow:var(--sombra);border-left:5px solid var(--mostaza)}
-  .sede b{color:var(--indigo)}
-  .sede small{display:block;color:var(--suave)}
+.destacados{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.libro{text-align:left}
+.portada{aspect-ratio:2/3;border-radius:6px 12px 12px 6px;padding:18px 16px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;box-shadow:var(--sombra);position:relative;overflow:hidden;margin-bottom:12px}
+.portada::before{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;background:rgba(0,0,0,.18)}
+.portada b{font-family:var(--serif);font-size:1.25rem;line-height:1.15}
+.portada small{font-size:.75rem;opacity:.85;letter-spacing:.06em;text-transform:uppercase}
+.libro h4{font-size:.98rem;font-weight:600}
+.libro span{font-size:.88rem;color:var(--tinta-2)}
+.libro .precio{color:var(--terracota);font-weight:600}
 
-  /* Contacto */
-  .contacto{background:var(--arena)}
-  .form-box{max-width:720px;margin:0 auto;background:#fff;border-radius:20px;padding:32px;box-shadow:var(--sombra)}
-  .fila{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  label{font-size:.85rem;font-weight:600;color:var(--indigo);display:block;margin:12px 0 6px}
-  input,select,textarea{width:100%;padding:12px 14px;border:1.5px solid #e2d8c8;border-radius:10px;font:inherit;background:var(--crema)}
-  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--terracota);background:#fff}
-  textarea{min-height:110px;resize:vertical}
-  .form-box .btn{margin-top:20px;width:100%;justify-content:center}
-  .nota{font-size:.8rem;color:var(--suave);margin-top:10px;text-align:center}
-  .aviso{margin-top:14px;padding:12px 14px;border-radius:10px;font-size:.9rem;display:none}
-  .aviso.ok{display:block;background:#e7f6ec;color:#1d6b38}
-  .aviso.err{display:block;background:#fdecea;color:#8e3420}
+.pasos{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:paso}
+.paso{background:var(--blanco);border-radius:var(--radio);padding:28px;border:1px solid var(--borde);position:relative}
+.paso::before{counter-increment:paso;content:counter(paso);font-family:var(--serif);font-size:2.6rem;font-weight:700;color:var(--oro);display:block;line-height:1;margin-bottom:10px}
+.paso h3{font-size:1.2rem;margin-bottom:6px}
+.paso p{color:var(--tinta-2);font-size:.95rem}
 
-  footer{background:#161e33;color:#aab3c9;padding:40px 0 24px;font-size:.9rem}
-  .foot{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
-  footer h3{color:#fff;font-size:1.1rem;margin-bottom:8px}
-  footer a{color:var(--mostaza);text-decoration:none}
-  .copy{text-align:center;margin-top:28px;border-top:1px solid #2a3452;padding-top:18px;font-size:.8rem}
+.sedes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.sede{border-left:4px solid var(--verde);background:var(--papel);padding:20px 22px;border-radius:0 var(--radio) var(--radio) 0}
+.sede h3{font-size:1.15rem;margin-bottom:4px}
+.sede p{font-size:.92rem;color:var(--tinta-2)}
 
-  /* ===== Chatbot ===== */
-  .chat-fab{position:fixed;right:20px;bottom:20px;z-index:100;width:64px;height:64px;border-radius:50%;border:0;background:var(--terracota);color:#fff;box-shadow:0 10px 25px rgba(180,70,43,.45);cursor:pointer;display:grid;place-items:center;transition:.2s}
-  .chat-fab:hover{transform:scale(1.06)}
-  .chat-fab .punto{position:absolute;top:6px;right:6px;width:14px;height:14px;background:var(--mostaza);border:2px solid #fff;border-radius:50%}
-  .chat{position:fixed;right:20px;bottom:96px;z-index:100;width:380px;max-width:calc(100vw - 32px);height:600px;max-height:calc(100vh - 120px);background:#fff;border-radius:20px;box-shadow:0 20px 50px rgba(31,42,68,.3);display:none;flex-direction:column;overflow:hidden}
-  .chat.abierto{display:flex;animation:sube .25s ease}
-  @keyframes sube{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-  .chat-top{background:var(--indigo);color:#fff;padding:14px 16px;display:flex;align-items:center;gap:12px}
-  .chat-top .av{width:40px;height:40px;border-radius:50%;background:var(--mostaza);display:grid;place-items:center;font-size:1.3rem;flex:none}
-  .chat-top b{display:block;font-family:Fraunces,serif}
-  .chat-top small{color:#9fe0b4;font-size:.78rem}
-  .chat-top button{margin-left:auto;background:none;border:0;color:#fff;font-size:1.5rem;cursor:pointer;line-height:1}
-  .chat-body{flex:1;overflow-y:auto;padding:16px;background:var(--crema);display:flex;flex-direction:column;gap:10px}
-  .msg{max-width:85%;padding:10px 14px;border-radius:16px;font-size:.92rem;white-space:pre-line}
-  .msg.bot{background:#fff;border:1px solid var(--arena);border-bottom-left-radius:4px;align-self:flex-start}
-  .msg.user{background:var(--terracota);color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
-  .opciones{display:flex;flex-wrap:wrap;gap:6px;align-self:flex-start}
-  .opciones button{background:#fff;border:1.5px solid var(--terracota);color:var(--terracota-dark);border-radius:999px;padding:6px 12px;font-size:.8rem;font-weight:500;cursor:pointer;text-align:left}
-  .opciones button:hover{background:var(--terracota);color:#fff}
-  .opciones button.alt{border-color:var(--indigo);color:var(--indigo)}
-  .opciones button.alt:hover{background:var(--indigo);color:#fff}
-  .escribiendo{align-self:flex-start;background:#fff;border:1px solid var(--arena);border-radius:16px;padding:10px 14px;display:flex;gap:4px}
-  .escribiendo i{width:7px;height:7px;border-radius:50%;background:var(--suave);animation:rebote 1s infinite}
-  .escribiendo i:nth-child(2){animation-delay:.15s}.escribiendo i:nth-child(3){animation-delay:.3s}
-  @keyframes rebote{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-4px)}}
-  .chat-form{display:flex;gap:8px;padding:12px;border-top:1px solid var(--arena);background:#fff}
-  .chat-form input{flex:1;border-radius:999px;padding:10px 16px}
-  .chat-form button{width:44px;height:44px;border-radius:50%;border:0;background:var(--terracota);color:#fff;cursor:pointer;flex:none}
+/* Contacto */
+.contacto{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:start}
+.contacto-info{background:var(--verde);color:var(--papel);border-radius:var(--radio);padding:34px}
+.contacto-info h2{font-size:2rem;margin-bottom:12px}
+.contacto-info p{opacity:.9;margin-bottom:18px}
+.contacto-info ul{list-style:none;display:grid;gap:10px}
+.contacto-info a{color:var(--oro);font-weight:600}
+form.card{background:var(--blanco);border:1px solid var(--borde);border-radius:var(--radio);padding:30px;display:grid;gap:14px}
+label{font-size:.85rem;font-weight:600;display:grid;gap:6px}
+input,textarea,select{font:inherit;padding:12px 14px;border:1.5px solid var(--borde);border-radius:10px;background:var(--papel);color:var(--tinta);width:100%}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--terracota)}
+.fila{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.aviso{font-size:.88rem;padding:10px 14px;border-radius:10px;display:none}
+.aviso.ok{display:block;background:#e3efe8;color:var(--verde)}
+.aviso.err{display:block;background:#f6e1d9;color:var(--terracota-2)}
 
-  .wa-float{position:fixed;left:20px;bottom:20px;z-index:90;width:56px;height:56px;border-radius:50%;background:var(--verde-wa);display:grid;place-items:center;box-shadow:0 8px 20px rgba(37,211,102,.4)}
+footer{background:var(--tinta);color:#c9cfc9;padding:40px 0 28px;font-size:.9rem}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer b{font-family:var(--serif);color:var(--papel);font-size:1.15rem}
 
-  @media (max-width:900px){
-    .hero-grid,.nosotros-grid{grid-template-columns:1fr}
-    .cards{grid-template-columns:repeat(2,1fr)}
-    .serv-grid{grid-template-columns:1fr}
-    .menu{display:none}
-  }
-  @media (max-width:560px){
-    .cards,.fila{grid-template-columns:1fr}
-    .nav .btn{display:none}
-    .hero{padding:48px 0}
-    section{padding:56px 0}
-    .form-box{padding:22px}
-    .chat{right:16px;bottom:92px}
-  }
+/* ============ CHATBOT ============ */
+.chat-btn{position:fixed;right:20px;bottom:20px;z-index:50;display:flex;align-items:center;gap:10px;background:var(--tinta);color:var(--papel);border:0;border-radius:999px;padding:10px 20px 10px 10px;font:600 .95rem var(--sans);cursor:pointer;box-shadow:var(--sombra)}
+.chat-btn .av{width:40px;height:40px;border-radius:50%;background:var(--oro);display:grid;place-items:center;font-size:1.3rem}
+.chat-btn .punto{width:10px;height:10px;border-radius:50%;background:#4cc38a;margin-left:2px}
+.chat{position:fixed;right:20px;bottom:88px;z-index:60;width:min(380px,calc(100vw - 32px));height:min(600px,calc(100vh - 120px));background:var(--blanco);border-radius:20px;box-shadow:0 20px 60px rgba(31,42,36,.28);display:none;flex-direction:column;overflow:hidden;border:1px solid var(--borde)}
+.chat.abierto{display:flex}
+.chat-head{background:var(--verde);color:var(--papel);padding:14px 16px;display:flex;align-items:center;gap:12px}
+.chat-head .av{width:40px;height:40px;border-radius:50%;background:var(--oro);display:grid;place-items:center;font-size:1.3rem}
+.chat-head b{font-family:var(--serif);font-size:1.05rem;display:block}
+.chat-head small{opacity:.85;font-size:.78rem}
+.chat-head button{margin-left:auto;background:none;border:0;color:var(--papel);font-size:1.4rem;cursor:pointer}
+.chat-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--papel)}
+.msg{max-width:85%;padding:10px 14px;border-radius:16px;font-size:.92rem;white-space:pre-line;animation:entra .25s ease}
+.msg.bot{background:var(--blanco);border:1px solid var(--borde);border-bottom-left-radius:4px;align-self:flex-start}
+.msg.yo{background:var(--terracota);color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
+@keyframes entra{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.chips{display:flex;flex-wrap:wrap;gap:6px;align-self:flex-start}
+.chip{background:transparent;border:1.5px solid var(--verde);color:var(--verde);border-radius:999px;padding:6px 12px;font:500 .82rem var(--sans);cursor:pointer;text-align:left}
+.chip:hover{background:var(--verde);color:#fff}
+.chip.acc{border-color:var(--terracota);color:var(--terracota)}
+.chip.acc:hover{background:var(--terracota);color:#fff}
+.escribiendo{align-self:flex-start;font-size:.8rem;color:var(--tinta-2);font-style:italic}
+.chat-foot{display:flex;gap:8px;padding:12px;border-top:1px solid var(--borde);background:var(--blanco)}
+.chat-foot input{flex:1;border-radius:999px;padding:10px 16px}
+.chat-foot button{background:var(--terracota);color:#fff;border:0;border-radius:50%;width:44px;height:44px;font-size:1.1rem;cursor:pointer;flex-shrink:0}
+
+/* Responsive */
+@media (max-width:900px){
+  .hero-grid,.contacto{grid-template-columns:1fr}
+  .cats,.destacados{grid-template-columns:repeat(2,1fr)}
+  .pasos,.sedes{grid-template-columns:1fr}
+  .estante{max-width:420px}
+}
+@media (max-width:720px){
+  .menu{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--papel);border-bottom:1px solid var(--borde)}
+  .menu.abierto{display:flex}
+  .menu a{display:block;padding:14px 16px}
+  .burger{display:block}
+  .nav .btn-prim{display:none}
+  .fila{grid-template-columns:1fr}
+  .chat-btn .txt{display:none}
+  .chat-btn{padding:10px}
+  section{padding:56px 0}
+  .hero{padding:48px 0}
+}
 </style>
 </head>
 <body>
 
-<div class="tejido"></div>
+<div class="tejido fino"></div>
 <header>
   <div class="wrap nav">
     <a href="#inicio" class="logo">
-      <svg width="36" height="36" viewBox="0 0 36 36" aria-hidden="true">
-        <path d="M2 30 L12 12 L18 20 L24 8 L34 30 Z" fill="#1f2a44"/>
-        <path d="M24 8 L27.5 15 L20.5 15 Z" fill="#fff"/>
-        <rect x="8" y="24" width="20" height="8" rx="1.5" fill="#b4462b"/>
-        <rect x="17.3" y="24" width="1.4" height="8" fill="#e0a526"/>
-      </svg>
-      Librerías Andinas
+      <span class="logo-icon">A</span>
+      <span><b>Librerías Andinas</b><small>Lectura para todo el Perú</small></span>
     </a>
-    <ul class="menu">
+    <ul class="menu" id="menu">
       <li><a href="#catalogo">Catálogo</a></li>
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#destacados">Destacados</a></li>
+      <li><a href="#pedidos">Cómo pedir</a></li>
+      <li><a href="#sedes">Sedes</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <button class="btn" onclick="abrirChat()">💬 Consúltanos</button>
+    <a href="#contacto" class="btn btn-prim">Cotizar lista</a>
+    <button class="burger" id="burger" aria-label="Abrir menú">☰</button>
   </div>
 </header>
 
 <main id="inicio">
+  <!-- HERO -->
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="tag">Hecho en Perú · desde los Andes</span>
-        <h1>Libros y útiles que <em>abren caminos</em> en todo el Perú</h1>
-        <p>Textos escolares, universitarios, literatura peruana y útiles de oficina. Armamos tu lista escolar y te la llevamos a casa.</p>
-        <div class="ctas">
-          <button class="btn" onclick="abrirChat()">Pregúntale a Andino 🦙</button>
-          <a class="btn sec" href="#catalogo">Ver catálogo</a>
+        <span class="etiqueta">Librería peruana · desde los Andes</span>
+        <h1>Cada libro es un <em>camino</em> que empieza en tus manos</h1>
+        <p>Textos escolares, universitarios, literatura peruana y útiles de oficina. Te armamos la lista y la llevamos a tu casa, en Lima o en provincia.</p>
+        <div class="hero-btns">
+          <button class="btn btn-prim" onclick="abrirChat()">💬 Pregúntale a Kusi</button>
+          <a href="#catalogo" class="btn btn-sec">Ver catálogo</a>
         </div>
-        <div class="stats">
-          <div><b>+15 000</b><span>títulos disponibles</span></div>
+        <div class="datos">
+          <div><b>+15 mil</b><span>títulos en stock</span></div>
           <div><b>24 h</b><span>entrega en Lima</span></div>
           <div><b>25</b><span>regiones atendidas</span></div>
         </div>
       </div>
       <div class="estante" aria-hidden="true">
-        <div class="libros" id="libros"></div>
-        <p><b>Novedades:</b> literatura peruana, textos escolares 2027 y guías preuniversitarias.</p>
+        <div class="sello">Envíos a<br>todo el<br>Perú</div>
+        <div class="libros">
+          <div class="lomo">ARGUEDAS</div>
+          <div class="lomo">VALLEJO</div>
+          <div class="lomo">VARGAS LLOSA</div>
+          <div class="lomo">RIBEYRO</div>
+          <div class="lomo">MATEMÁTICA</div>
+          <div class="lomo">HISTORIA</div>
+          <div class="lomo">DERECHO</div>
+        </div>
+        <div class="repisa"></div>
       </div>
     </div>
   </section>
 
-  <section id="catalogo">
+  <!-- CATÁLOGO -->
+  <section class="blanco" id="catalogo">
     <div class="wrap">
-      <div class="sec-head">
-        <span class="tag">Catálogo</span>
+      <div class="titulo-sec">
+        <span class="etiqueta">Catálogo</span>
         <h2>Todo lo que necesitas para leer y aprender</h2>
-        <p>Trabajamos con las principales editoriales nacionales e internacionales.</p>
+        <p>Trabajamos con las principales editoriales del Perú y del extranjero.</p>
       </div>
-      <div class="cards">
-        <div class="card"><div class="ico">🎒</div><h3>Escolar</h3><p>Textos de inicial, primaria y secundaria, plan lector y útiles escolares.</p></div>
-        <div class="card"><div class="ico">🎓</div><h3>Universitario</h3><p>Derecho, administración, ingeniería, medicina y preuniversitarios.</p></div>
-        <div class="card"><div class="ico">📖</div><h3>Literatura</h3><p>Vargas Llosa, Arguedas, Vallejo, Ribeyro y autores peruanos contemporáneos.</p></div>
-        <div class="card"><div class="ico">🖇️</div><h3>Oficina</h3><p>Papelería, archivo, tintas y suministros para empresas e instituciones.</p></div>
+      <div class="cats">
+        <div class="cat"><div class="ico">🎒</div><h3>Escolar</h3><p>Inicial, primaria y secundaria. Plan lector y útiles escolares.</p></div>
+        <div class="cat"><div class="ico">🎓</div><h3>Universitario</h3><p>Derecho, administración, ingeniería, salud y preuniversitarios.</p></div>
+        <div class="cat"><div class="ico">📖</div><h3>Literatura peruana</h3><p>Clásicos y autores contemporáneos del Perú y Latinoamérica.</p></div>
+        <div class="cat"><div class="ico">🖇️</div><h3>Oficina</h3><p>Papelería, archivo y suministros para empresas e instituciones.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="servicios" id="servicios">
+  <!-- DESTACADOS -->
+  <section id="destacados">
     <div class="wrap">
-      <div class="sec-head">
-        <span class="tag">Servicios</span>
-        <h2>Más que una librería</h2>
-        <p>Te ayudamos desde la búsqueda del libro hasta la entrega en tu puerta.</p>
+      <div class="titulo-sec">
+        <span class="etiqueta">Los más pedidos</span>
+        <h2>Destacados del mes</h2>
+        <p>Precios referenciales. Consulta stock con Kusi o por WhatsApp.</p>
       </div>
-      <div class="serv-grid">
-        <div class="serv"><div class="num">01</div><h3>Listas escolares armadas</h3><p>Envíanos la foto de tu lista y te la entregamos completa, forrada y etiquetada.</p></div>
-        <div class="serv"><div class="num">02</div><h3>Pedidos especiales</h3><p>¿No lo encuentras? Lo importamos o conseguimos con la editorial en 7 a 20 días.</p></div>
-        <div class="serv"><div class="num">03</div><h3>Ventas corporativas</h3><p>Precios especiales para colegios, universidades, empresas y municipalidades.</p></div>
+      <div class="destacados">
+        <div class="libro">
+          <div class="portada" style="background:var(--verde)"><small>Novela</small><b>Los ríos profundos</b><small>J. M. Arguedas</small></div>
+          <h4>Los ríos profundos</h4><span>José María Arguedas · <span class="precio">S/ 39.00</span></span>
+        </div>
+        <div class="libro">
+          <div class="portada" style="background:var(--terracota)"><small>Poesía</small><b>Los heraldos negros</b><small>César Vallejo</small></div>
+          <h4>Los heraldos negros</h4><span>César Vallejo · <span class="precio">S/ 29.00</span></span>
+        </div>
+        <div class="libro">
+          <div class="portada" style="background:var(--tinta)"><small>Novela</small><b>La ciudad y los perros</b><small>M. Vargas Llosa</small></div>
+          <h4>La ciudad y los perros</h4><span>Mario Vargas Llosa · <span class="precio">S/ 55.00</span></span>
+        </div>
+        <div class="libro">
+          <div class="portada" style="background:#3d6f8f"><small>Preuniversitario</small><b>Guía de admisión 2027</b><small>Edición actualizada</small></div>
+          <h4>Guía de admisión 2027</h4><span>Varios autores · <span class="precio">S/ 65.00</span></span>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="nosotros">
-    <div class="wrap nosotros-grid">
-      <div>
-        <span class="tag">Nosotros</span>
-        <h2 style="font-size:clamp(1.8rem,3.5vw,2.4rem);margin:10px 0">Una librería peruana con raíces andinas</h2>
-        <p style="color:var(--suave)">Nacimos con la misión de acercar la lectura a cada rincón del país. Hoy atendemos a familias, estudiantes y empresas con el mismo compromiso de siempre.</p>
-        <ul>
-          <li>Atención personalizada en tienda, web y WhatsApp</li>
-          <li>Pagos con Yape, Plin, tarjetas y transferencia</li>
-          <li>Boleta y factura electrónica</li>
-          <li>Envíos a Lima y provincias</li>
-        </ul>
+  <!-- CÓMO PEDIR -->
+  <section class="blanco" id="pedidos">
+    <div class="wrap">
+      <div class="titulo-sec">
+        <span class="etiqueta">Cómo pedir</span>
+        <h2>Tu pedido en tres pasos</h2>
+      </div>
+      <div class="pasos">
+        <div class="paso"><h3>Cuéntanos qué buscas</h3><p>Escríbele a Kusi, mándanos la foto de tu lista escolar o llena el formulario.</p></div>
+        <div class="paso"><h3>Recibe tu cotización</h3><p>Te respondemos por WhatsApp con precios y disponibilidad, normalmente en menos de 2 horas.</p></div>
+        <div class="paso"><h3>Paga y recibe</h3><p>Paga con Yape, Plin, tarjeta o transferencia. Recógelo en tienda o te lo enviamos.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEDES -->
+  <section id="sedes">
+    <div class="wrap">
+      <div class="titulo-sec">
+        <span class="etiqueta">Sedes</span>
+        <h2>Visítanos</h2>
+        <p>Lunes a sábado de 9:00 a. m. a 8:00 p. m. · Domingos de 10:00 a. m. a 2:00 p. m.</p>
       </div>
       <div class="sedes">
-        <div class="sede"><b>📍 Sede Lima Centro</b><small>Jr. Camaná 850, Cercado de Lima</small><small>Lun a Sáb 9:00 – 20:00 · Dom 10:00 – 14:00</small></div>
-        <div class="sede"><b>📍 Sede Huancayo</b><small>Jr. Real 540, Huancayo, Junín</small><small>Lun a Sáb 9:00 – 20:00</small></div>
-        <div class="sede"><b>📍 Sede Cusco</b><small>Av. El Sol 312, Cusco</small><small>Lun a Sáb 9:00 – 20:00</small></div>
+        <div class="sede"><h3>Lima – Cercado</h3><p>Jr. Quilca 245, Cercado de Lima</p></div>
+        <div class="sede"><h3>Huancayo</h3><p>Calle Real 812, Huancayo, Junín</p></div>
+        <div class="sede"><h3>Cusco</h3><p>Av. El Sol 430, Cusco</p></div>
       </div>
     </div>
   </section>
 
-  <section class="contacto" id="contacto">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="tag">Contacto</span>
-        <h2>Cuéntanos qué necesitas</h2>
-        <p>Tu mensaje nos llega por correo y WhatsApp. Te respondemos en menos de 24 horas.</p>
+  <!-- CONTACTO -->
+  <section class="blanco" id="contacto">
+    <div class="wrap contacto">
+      <div class="contacto-info">
+        <h2>¿Buscas un libro en particular?</h2>
+        <p>Déjanos tus datos y te contactamos. Tu mensaje nos llega por correo y puedes enviarlo también a WhatsApp.</p>
+        <ul>
+          <li>📱 WhatsApp: <a href="https://wa.me/51987642958" target="_blank" rel="noopener">987 642 958</a></li>
+          <li>✉️ <a href="mailto:jorge.floresc@unmsm.edu.pe">jorge.floresc@unmsm.edu.pe</a></li>
+          <li>🚚 Envíos a las 25 regiones del Perú</li>
+        </ul>
       </div>
-      <form class="form-box" id="formContacto">
+      <form class="card" id="formContacto">
         <div class="fila">
-          <div><label for="fNombre">Nombre completo *</label><input id="fNombre" required placeholder="Ej. María Quispe"></div>
-          <div><label for="fTelefono">Celular / WhatsApp *</label><input id="fTelefono" required inputmode="tel" placeholder="9XX XXX XXX"></div>
+          <label>Nombre<input id="fNombre" required placeholder="Tu nombre"></label>
+          <label>Celular<input id="fTelefono" required placeholder="9XX XXX XXX" inputmode="tel"></label>
         </div>
         <div class="fila">
-          <div><label for="fCorreo">Correo electrónico</label><input id="fCorreo" type="email" placeholder="tucorreo@ejemplo.com"></div>
-          <div><label for="fTipo">Tipo de consulta</label>
-            <select id="fTipo">
-              <option>Cotización de libros</option>
-              <option>Lista escolar</option>
-              <option>Pedido especial</option>
-              <option>Venta corporativa</option>
-              <option>Otro</option>
+          <label>Correo (opcional)<input id="fCorreo" type="email" placeholder="tucorreo@ejemplo.com"></label>
+          <label>Tema
+            <select id="fTema">
+              <option>Lista escolar</option><option>Libro universitario</option>
+              <option>Literatura</option><option>Venta corporativa</option><option>Otro</option>
             </select>
-          </div>
+          </label>
         </div>
-        <label for="fMensaje">Mensaje *</label>
-        <textarea id="fMensaje" required placeholder="Escribe el título, autor o lo que necesites…"></textarea>
-        <button class="btn" type="submit">Enviar consulta</button>
-        <div class="aviso" id="avisoForm"></div>
-        <p class="nota">Al enviar se abrirá WhatsApp con tu mensaje listo y se enviará una copia a nuestro correo.</p>
+        <label>Tu consulta<textarea id="fMensaje" rows="4" required placeholder="¿Qué libro o producto buscas?"></textarea></label>
+        <button class="btn btn-prim" type="submit">Enviar consulta</button>
+        <div class="aviso" id="fAviso"></div>
       </form>
     </div>
   </section>
 </main>
 
+<div class="tejido"></div>
 <footer>
-  <div class="wrap">
-    <div class="foot">
-      <div><h3>Librerías Andinas</h3><p>Libros y útiles para todo el Perú.</p></div>
-      <div><h3>Contacto</h3>
-        <p>WhatsApp: <a href="https://wa.me/51987642958" target="_blank" rel="noopener">987 642 958</a></p>
-        <p>Correo: <a href="mailto:jorge.floresc@unmsm.edu.pe">jorge.floresc@unmsm.edu.pe</a></p>
-      </div>
-      <div><h3>Horario</h3><p>Lun a Sáb 9:00 – 20:00<br>Dom 10:00 – 14:00 (Lima)</p></div>
-    </div>
-    <p class="copy">© <span id="anio"></span> Librerías Andinas · Lima, Perú</p>
+  <div class="wrap foot">
+    <div><b>Librerías Andinas</b><br>Libros y útiles para todo el Perú.</div>
+    <div>© 2026 Librerías Andinas · Todos los derechos reservados</div>
   </div>
 </footer>
 
-<!-- WhatsApp flotante -->
-<a class="wa-float" href="https://wa.me/51987642958?text=Hola%20Librer%C3%ADas%20Andinas%2C%20quisiera%20informaci%C3%B3n" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
-  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3a.5.5 0 0 0 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3Z"/></svg>
-</a>
-
-<!-- Chatbot -->
-<button class="chat-fab" id="chatFab" onclick="toggleChat()" aria-label="Abrir chat">
-  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/></svg>
-  <span class="punto"></span>
+<!-- CHATBOT -->
+<button class="chat-btn" id="chatBtn" onclick="abrirChat()" aria-label="Abrir chat">
+  <span class="av">🦙</span><span class="txt">¿Te ayudo?</span><span class="punto"></span>
 </button>
-
-<div class="chat" id="chat" role="dialog" aria-label="Chat de Librerías Andinas">
-  <div class="chat-top">
-    <div class="av">🦙</div>
-    <div><b>Andino</b><small>● Asistente virtual en línea</small></div>
-    <button onclick="toggleChat()" aria-label="Cerrar chat">×</button>
+<div class="chat" id="chat" role="dialog" aria-label="Chat con Kusi">
+  <div class="chat-head">
+    <span class="av">🦙</span>
+    <div><b>Kusi</b><small>Asistente de Librerías Andinas · en línea</small></div>
+    <button onclick="cerrarChat()" aria-label="Cerrar chat">×</button>
   </div>
   <div class="chat-body" id="chatBody"></div>
-  <form class="chat-form" id="chatForm">
+  <form class="chat-foot" id="chatForm">
     <input id="chatInput" placeholder="Escribe tu pregunta…" autocomplete="off">
     <button type="submit" aria-label="Enviar">➤</button>
   </form>
@@ -335,50 +368,49 @@
 <script>
 /* ================== CONFIGURACIÓN ================== */
 const CONFIG = {
-  whatsapp: "51987642958",                     // código de país + número
-  correo:   "jorge.floresc@unmsm.edu.pe",      // destino de los leads
-  empresa:  "Librerías Andinas"
+  empresa:  "Librerías Andinas",
+  whatsapp: "51987642958",                 // 51 = código de Perú
+  correo:   "jorge.floresc@unmsm.edu.pe"
 };
 
-/* ============ 10 PREGUNTAS FRECUENTES ============ */
+/* ================== 10 PREGUNTAS FRECUENTES ================== */
 const FAQ = [
-  { q:"¿Cuál es su horario de atención?", k:["horario","hora","abren","cierran","atienden","domingo"],
-    a:"🕘 Atendemos de lunes a sábado de 9:00 a.m. a 8:00 p.m. y los domingos de 10:00 a.m. a 2:00 p.m. (solo sede Lima).\nPor WhatsApp respondemos todos los días." },
-  { q:"¿Dónde están ubicados?", k:["donde","ubica","direccion","dirección","sede","tienda","local"],
-    a:"📍 Tenemos 3 sedes:\n• Lima: Jr. Camaná 850, Cercado de Lima\n• Huancayo: Jr. Real 540\n• Cusco: Av. El Sol 312" },
-  { q:"¿Hacen delivery y envíos a provincia?", k:["delivery","envio","envío","envian","provincia","despacho","llega"],
-    a:"🚚 ¡Sí! En Lima entregamos en 24 h (gratis por compras desde S/ 150). A provincias enviamos por Olva o Shalom en 2 a 5 días hábiles." },
-  { q:"¿Qué métodos de pago aceptan?", k:["pago","pagar","yape","plin","tarjeta","transferencia","efectivo"],
-    a:"💳 Aceptamos Yape, Plin, tarjetas Visa y Mastercard, transferencia bancaria (BCP, BBVA, Interbank) y efectivo en tienda." },
-  { q:"¿Arman listas escolares?", k:["lista","escolar","colegio","útiles","utiles","forrado"],
-    a:"🎒 Sí. Envíanos una foto de tu lista, te cotizamos en menos de 24 h y te la entregamos completa. El forrado y etiquetado tiene un costo adicional pequeño." },
-  { q:"¿Venden libros universitarios y de autores peruanos?", k:["universitario","universidad","autor","peruano","literatura","novela","vargas","arguedas","vallejo"],
-    a:"📚 Sí. Tenemos textos universitarios de todas las carreras y una sección especial de literatura peruana: Vargas Llosa, Arguedas, Vallejo, Ribeyro y autores contemporáneos." },
-  { q:"¿Puedo pedir un libro que no tengan en stock?", k:["stock","pedido","especial","importar","no tienen","conseguir","encargo"],
-    a:"🔎 Claro. Hacemos pedidos especiales con editoriales nacionales e importadas. Demora entre 7 y 20 días según el origen, con un adelanto del 50 %." },
-  { q:"¿Tienen descuentos para colegios o empresas?", k:["descuento","corporativ","empresa","institución","institucion","mayor","promoción","promocion","oferta"],
-    a:"🏫 Sí. Ofrecemos precios corporativos para colegios, universidades, empresas y entidades públicas, además de 10 % de descuento en compras por volumen." },
-  { q:"¿Cuál es la política de cambios y devoluciones?", k:["cambio","devolu","reclamo","garantía","garantia","fallado"],
-    a:"🔄 Puedes cambiar tu producto dentro de los 7 días con tu comprobante, siempre que esté en buen estado. Si llegó con fallas de fábrica, lo reponemos sin costo." },
-  { q:"¿Emiten boleta y factura?", k:["boleta","factura","ruc","comprobante","sunat"],
+  { q:"¿Cuál es el horario de atención?", k:["horario","hora","abren","cierran","atienden","domingo","sabado","sábado"],
+    a:"🕘 Atendemos de lunes a sábado de 9:00 a. m. a 8:00 p. m. y los domingos de 10:00 a. m. a 2:00 p. m.\nPor WhatsApp respondemos todos los días." },
+  { q:"¿Dónde están ubicados?", k:["donde","dónde","ubica","direccion","dirección","sede","tienda","local","lima","cusco","huancayo"],
+    a:"📍 Tenemos 3 sedes:\n• Lima: Jr. Quilca 245, Cercado\n• Huancayo: Calle Real 812\n• Cusco: Av. El Sol 430" },
+  { q:"¿Hacen delivery y envíos a provincia?", k:["delivery","envio","envío","envian","envían","provincia","despacho","llega","shalom","olva"],
+    a:"🚚 ¡Sí! En Lima entregamos en 24 h (gratis desde S/ 150). A provincia enviamos por Olva o Shalom en 2 a 5 días hábiles." },
+  { q:"¿Qué métodos de pago aceptan?", k:["pago","pagar","yape","plin","tarjeta","transferencia","efectivo","visa"],
+    a:"💳 Aceptamos Yape, Plin, tarjetas Visa y Mastercard, transferencia bancaria (BCP, Interbank, BBVA) y efectivo en tienda." },
+  { q:"¿Arman listas escolares?", k:["lista","escolar","colegio","útiles","utiles","forrado","forrar","campaña"],
+    a:"🎒 Sí. Envíanos la foto de tu lista y te cotizamos en menos de 2 horas. Podemos entregarla forrada y etiquetada con el nombre del alumno." },
+  { q:"¿Tienen libros universitarios y de autores peruanos?", k:["universitario","universidad","autor","peruano","literatura","novela","vargas","arguedas","vallejo","ribeyro","derecho"],
+    a:"📚 Sí: textos de derecho, administración, ingeniería y salud, además de una sección completa de literatura peruana (Arguedas, Vallejo, Vargas Llosa, Ribeyro y autores actuales)." },
+  { q:"¿Puedo pedir un libro que no tengan?", k:["stock","pedido","especial","importar","no tienen","conseguir","encargo","agotado"],
+    a:"🔎 Claro. Hacemos pedidos especiales con la editorial o lo importamos. Demora entre 7 y 20 días según el título. Solo pedimos un adelanto del 30 %." },
+  { q:"¿Tienen descuentos para colegios o empresas?", k:["descuento","corporativ","empresa","institución","institucion","mayor","promoción","promocion","oferta","colegios"],
+    a:"🏫 Sí. Colegios, universidades, empresas y municipalidades tienen precios especiales desde 10 unidades. Déjame tus datos y un asesor te envía la propuesta." },
+  { q:"¿Cuál es la política de cambios y devoluciones?", k:["cambio","devolu","reclamo","garantía","garantia","fallado","libro de reclamaciones"],
+    a:"🔄 Puedes cambiar tu producto dentro de los 7 días con tu comprobante, si está en buen estado. Si llegó fallado, lo cambiamos sin costo. Contamos con Libro de Reclamaciones." },
+  { q:"¿Emiten boleta o factura?", k:["boleta","factura","ruc","comprobante","sunat","electrónica","electronica"],
     a:"🧾 Sí, emitimos boleta y factura electrónica. Para factura solo necesitamos tu RUC y razón social." }
 ];
 
 /* ================== LÓGICA DEL CHAT ================== */
 const $ = id => document.getElementById(id);
 const body = $("chatBody");
-const historial = [];      // preguntas que hizo el usuario
-let etapa = null;          // null | 'nombre' | 'telefono' | 'consulta'
-const lead = {};
+const historial = [];
+let modo = "libre";          // "libre" o pasos de captura de datos
+let lead = {};
 let iniciado = false;
 
-function toggleChat(){
-  const abierto = $("chat").classList.toggle("abierto");
-  $("chatFab").querySelector(".punto").style.display = "none";
-  if (abierto && !iniciado){ iniciado = true; saludo(); }
-  if (abierto) $("chatInput").focus();
+function abrirChat(){
+  $("chat").classList.add("abierto");
+  if(!iniciado){ iniciado = true; saludo(); }
+  setTimeout(()=>$("chatInput").focus(),100);
 }
-function abrirChat(){ if (!$("chat").classList.contains("abierto")) toggleChat(); }
+function cerrarChat(){ $("chat").classList.remove("abierto"); }
 
 function burbuja(texto, quien){
   const d = document.createElement("div");
@@ -387,175 +419,154 @@ function burbuja(texto, quien){
   body.appendChild(d);
   body.scrollTop = body.scrollHeight;
 }
-function bot(texto, luego){
-  const t = document.createElement("div");
-  t.className = "escribiendo"; t.innerHTML = "<i></i><i></i><i></i>";
-  body.appendChild(t); body.scrollTop = body.scrollHeight;
-  setTimeout(() => { t.remove(); burbuja(texto, "bot"); if (luego) luego(); }, 550);
-}
-function opciones(lista){
-  const box = document.createElement("div");
-  box.className = "opciones";
-  lista.forEach(o => {
+function botones(opciones){
+  const c = document.createElement("div");
+  c.className = "chips";
+  opciones.forEach(o=>{
     const b = document.createElement("button");
-    b.textContent = o.t; if (o.alt) b.className = "alt";
-    b.onclick = () => { box.remove(); o.fn(); };
-    box.appendChild(b);
+    b.className = "chip" + (o.acc ? " acc" : "");
+    b.textContent = o.t;
+    b.onclick = ()=>{ c.remove(); burbuja(o.t,"yo"); o.fn(); };
+    c.appendChild(b);
   });
-  body.appendChild(box); body.scrollTop = body.scrollHeight;
+  body.appendChild(c);
+  body.scrollTop = body.scrollHeight;
 }
-function menuFAQ(){
-  opciones([
-    ...FAQ.map((f, i) => ({ t: f.q, fn: () => responder(i) })),
-    { t: "👤 Hablar con un asesor", alt: true, fn: iniciarLead }
-  ]);
-}
-function saludo(){
-  bot("¡Hola! 👋 Soy Andino, el asistente de Librerías Andinas.", () =>
-    bot("Elige una pregunta o escríbeme lo que necesitas:", menuFAQ));
-}
-function responder(i){
-  const f = FAQ[i];
-  burbuja(f.q, "user");
-  historial.push(f.q);
-  bot(f.a, despues);
-}
-function despues(){
-  bot("¿Te ayudo con algo más?", () => opciones([
-    { t: "Ver otras preguntas", fn: () => bot("Aquí las tienes:", menuFAQ) },
-    { t: "👤 Quiero que me contacten", alt: true, fn: iniciarLead }
-  ]));
+function bot(texto, opciones){
+  const e = document.createElement("div");
+  e.className = "escribiendo"; e.textContent = "Kusi está escribiendo…";
+  body.appendChild(e); body.scrollTop = body.scrollHeight;
+  setTimeout(()=>{ e.remove(); burbuja(texto,"bot"); if(opciones) botones(opciones); }, 550);
 }
 
-/* Búsqueda por palabras clave para texto libre */
-function normalizar(s){ return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }
+const menuFAQ = () => [
+  ...FAQ.map(f => ({ t:f.q, fn:()=>responder(f) })),
+  { t:"📩 Quiero que me contacten", acc:true, fn:iniciarLead }
+];
+const despues = () => [
+  { t:"Ver otras preguntas", fn:()=>bot("Estas son las preguntas más frecuentes:", menuFAQ()) },
+  { t:"📩 Quiero que me contacten", acc:true, fn:iniciarLead }
+];
+
+function saludo(){
+  bot("¡Hola! 👋 Soy Kusi, el asistente de Librerías Andinas.\n¿En qué te puedo ayudar? Elige una pregunta o escríbeme.", menuFAQ());
+}
+function responder(f){
+  historial.push(f.q);
+  bot(f.a, despues());
+}
+
+function normalizar(t){ return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""); }
 function buscar(texto){
   const t = normalizar(texto);
-  let mejor = -1, puntos = 0;
-  FAQ.forEach((f, i) => {
+  let mejor = null, puntos = 0;
+  FAQ.forEach(f=>{
     const p = f.k.filter(k => t.includes(normalizar(k))).length;
-    if (p > puntos){ puntos = p; mejor = i; }
+    if(p > puntos){ puntos = p; mejor = f; }
   });
   return mejor;
 }
 
-/* Captura de datos del cliente */
+/* Captura de datos */
 function iniciarLead(){
-  burbuja("Quiero que me contacten", "user");
-  etapa = "nombre";
-  bot("¡Con gusto! Un asesor te escribirá. ¿Cuál es tu nombre?");
+  modo = "nombre"; lead = {};
+  bot("¡Perfecto! Te pido unos datos para que un asesor te contacte.\n¿Cuál es tu nombre?");
 }
-function procesarLead(texto){
-  if (etapa === "nombre"){
-    lead.nombre = texto; etapa = "telefono";
-    bot(`Gracias, ${texto.split(" ")[0]}. ¿A qué número de celular/WhatsApp te contactamos?`);
-  } else if (etapa === "telefono"){
-    const num = texto.replace(/\D/g, "");
-    if (num.length < 9){ bot("Parece que el número está incompleto. Escríbelo con 9 dígitos, por favor."); return; }
-    lead.telefono = texto; etapa = "consulta";
-    bot("Perfecto. Por último, cuéntame brevemente qué necesitas (título, lista escolar, cotización…).");
-  } else if (etapa === "consulta"){
-    lead.consulta = texto; etapa = null;
-    const datos = {
-      origen: "Chatbot web",
-      nombre: lead.nombre, telefono: lead.telefono, correo: "",
-      tipo: "Consulta desde chatbot", mensaje: lead.consulta,
-      preguntas: historial.length ? historial.join(" | ") : "Ninguna"
-    };
-    bot("Enviando tus datos a nuestro equipo… 📨", () => {
-      enviarLead(datos).then(ok => {
-        bot(ok
-          ? "✅ ¡Listo! Recibimos tu consulta por correo. Ahora se abrirá WhatsApp para que nos envíes el mensaje y te atendamos al instante."
-          : "Tu consulta está lista. Se abrirá WhatsApp para que nos la envíes y te atendamos al instante.",
-          () => opciones([
-            { t: "📲 Abrir WhatsApp", fn: () => { abrirWhatsApp(datos); despuesLead(); } }
-          ]));
-      });
-    });
+function pasoLead(t){
+  if(modo === "nombre"){
+    lead.nombre = t; modo = "telefono";
+    bot(`Gracias, ${t.split(" ")[0]}. ¿A qué número de celular te escribimos?`);
+  } else if(modo === "telefono"){
+    const num = t.replace(/\D/g,"");
+    if(num.length < 9){ bot("Parece que falta algún dígito. Escribe tu celular de 9 dígitos, por favor."); return; }
+    lead.telefono = num; modo = "mensaje";
+    bot("¿Qué libro o producto buscas? Cuéntame en una frase.");
+  } else if(modo === "mensaje"){
+    lead.mensaje = t; modo = "libre";
+    lead.tema = "Chatbot"; lead.correo = "";
+    lead.preguntas = historial.length ? historial.join(" | ") : "Ninguna";
+    bot("⏳ Enviando tus datos…");
+    enviarCorreo(lead)
+      .then(()=> bot("✅ ¡Listo! Recibimos tu consulta por correo.\nPara una respuesta más rápida, envíala también por WhatsApp:", opcionesWA()))
+      .catch(()=> bot("No pude enviar el correo en este momento, pero puedes enviarnos tu consulta por WhatsApp:", opcionesWA()));
   }
 }
-function despuesLead(){
-  bot("¡Gracias por escribirnos! 📚 Si tienes otra duda, aquí estoy.", menuFAQ);
+function opcionesWA(){
+  return [
+    { t:"📱 Enviar por WhatsApp", acc:true, fn:()=>{ abrirWhatsApp(lead); bot("¡Gracias! Te responderemos muy pronto. 🦙", despues()); } },
+    { t:"Ver otras preguntas", fn:()=>bot("Aquí las tienes:", menuFAQ()) }
+  ];
 }
 
-/* Entrada de texto libre */
-$("chatForm").addEventListener("submit", e => {
+$("chatForm").addEventListener("submit", e=>{
   e.preventDefault();
-  const texto = $("chatInput").value.trim();
-  if (!texto) return;
+  const t = $("chatInput").value.trim();
+  if(!t) return;
   $("chatInput").value = "";
-  body.querySelectorAll(".opciones").forEach(o => o.remove());
-  if (etapa){ burbuja(texto, "user"); procesarLead(texto); return; }
-  burbuja(texto, "user");
-  historial.push(texto);
-  const i = buscar(texto);
-  if (i >= 0) bot(FAQ[i].a, despues);
-  else if (/hola|buen(o|a)s|saludos/i.test(texto)) bot("¡Hola! 😊 ¿En qué te puedo ayudar?", menuFAQ);
-  else if (/gracias/i.test(texto)) bot("¡A ti! Que tengas un gran día 📖");
-  else bot("No tengo esa respuesta todavía 🤔, pero un asesor puede ayudarte.", () => opciones([
-    { t: "👤 Hablar con un asesor", alt: true, fn: iniciarLead },
-    { t: "Ver preguntas frecuentes", fn: () => bot("Estas son las más consultadas:", menuFAQ) }
-  ]));
+  burbuja(t,"yo");
+  if(modo !== "libre"){ pasoLead(t); return; }
+  if(/^(hola|buenas|buenos|hi)\b/i.test(normalizar(t))){ bot("¡Hola! 😊 ¿Sobre qué te gustaría saber?", menuFAQ()); return; }
+  if(/gracias/i.test(t)){ bot("¡Con gusto! Si necesitas algo más, aquí estoy. 📚", despues()); return; }
+  const f = buscar(t);
+  if(f){ historial.push(t); bot(f.a, despues()); }
+  else {
+    historial.push(t);
+    bot("Esa pregunta no la tengo en mi lista 🤔, pero un asesor puede ayudarte. ¿Quieres dejar tus datos?", [
+      { t:"📩 Sí, que me contacten", acc:true, fn:iniciarLead },
+      { t:"Ver preguntas frecuentes", fn:()=>bot("Estas son las más consultadas:", menuFAQ()) }
+    ]);
+  }
 });
 
-/* ================== ENVÍO: CORREO + WHATSAPP ================== */
-// Correo vía FormSubmit (sin servidor). La 1.ª vez llega un correo de activación a CONFIG.correo.
-function enviarLead(d){
+/* ================== ENVÍO A CORREO Y WHATSAPP ================== */
+// Correo vía FormSubmit (gratis, sin servidor). La 1.ª vez llega un correo de activación a CONFIG.correo.
+function enviarCorreo(d){
   return fetch("https://formsubmit.co/ajax/" + CONFIG.correo, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "Accept": "application/json" },
+    method:"POST",
+    headers:{ "Content-Type":"application/json", "Accept":"application/json" },
     body: JSON.stringify({
       _subject: `Nuevo contacto ${CONFIG.empresa} – ${d.nombre}`,
       _template: "table",
       _captcha: "false",
-      "Origen": d.origen,
-      "Nombre": d.nombre,
-      "Teléfono / WhatsApp": d.telefono,
-      "Correo": d.correo || "—",
-      "Tipo de consulta": d.tipo,
-      "Mensaje": d.mensaje,
+      Nombre: d.nombre,
+      Celular: d.telefono,
+      Correo: d.correo || "No indicó",
+      Tema: d.tema,
+      Consulta: d.mensaje,
       "Preguntas hechas al chatbot": d.preguntas,
-      "Fecha": new Date().toLocaleString("es-PE")
+      Fecha: new Date().toLocaleString("es-PE")
     })
-  }).then(r => r.ok).catch(() => false);
+  }).then(r => { if(!r.ok) throw new Error("Error de envío"); return r.json(); });
 }
 function abrirWhatsApp(d){
   const txt =
 `Hola ${CONFIG.empresa} 👋
 *Nombre:* ${d.nombre}
-*Teléfono:* ${d.telefono}${d.correo ? `\n*Correo:* ${d.correo}` : ""}
-*Tipo:* ${d.tipo}
+*Celular:* ${d.telefono}
+*Tema:* ${d.tema}
 *Consulta:* ${d.mensaje}${d.preguntas && d.preguntas !== "Ninguna" ? `\n*Preguntas en el chat:* ${d.preguntas}` : ""}`;
   window.open(`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(txt)}`, "_blank");
 }
 
 /* Formulario de contacto */
-$("formContacto").addEventListener("submit", e => {
+$("formContacto").addEventListener("submit", e=>{
   e.preventDefault();
-  const aviso = $("avisoForm");
   const d = {
-    origen: "Formulario de contacto",
     nombre: $("fNombre").value.trim(), telefono: $("fTelefono").value.trim(),
-    correo: $("fCorreo").value.trim(), tipo: $("fTipo").value,
+    correo: $("fCorreo").value.trim(), tema: $("fTema").value,
     mensaje: $("fMensaje").value.trim(), preguntas: "Ninguna"
   };
-  abrirWhatsApp(d);                      // se abre antes para que el navegador no lo bloquee
-  enviarLead(d).then(ok => {
-    aviso.className = "aviso " + (ok ? "ok" : "err");
-    aviso.textContent = ok
-      ? "✅ ¡Gracias! Recibimos tu consulta por correo y se abrió WhatsApp con tu mensaje."
-      : "Se abrió WhatsApp con tu mensaje. No pudimos enviar el correo; inténtalo más tarde.";
-    if (ok) e.target.reset();
-  });
+  const aviso = $("fAviso");
+  aviso.className = "aviso ok"; aviso.textContent = "Enviando…";
+  enviarCorreo(d)
+    .then(()=>{ aviso.className="aviso ok"; aviso.textContent="✅ ¡Consulta enviada! Abriendo WhatsApp para que también nos la envíes por ahí."; e.target.reset(); })
+    .catch(()=>{ aviso.className="aviso err"; aviso.textContent="No se pudo enviar el correo. Te abrimos WhatsApp para que nos escribas directamente."; })
+    .finally(()=> abrirWhatsApp(d));
 });
 
-/* Decoración: estante de libros */
-(function(){
-  const colores = ["#b4462b","#e0a526","#f1e6d4","#6d8a5c","#c9674b","#8fa3c7","#e0a526","#b4462b","#f1e6d4","#6d8a5c","#c9674b"];
-  const alturas = [78,92,66,100,84,72,95,60,88,76,90];
-  $("libros").innerHTML = colores.map((c, i) => `<div class="libro" style="background:${c};height:${alturas[i]}%"></div>`).join("");
-  $("anio").textContent = new Date().getFullYear();
-})();
+/* Menú móvil */
+$("burger").onclick = ()=> $("menu").classList.toggle("abierto");
+document.querySelectorAll("#menu a").forEach(a => a.onclick = ()=> $("menu").classList.remove("abierto"));
 </script>
 </body>
 </html>
