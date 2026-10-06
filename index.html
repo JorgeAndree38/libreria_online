@@ -138,20 +138,31 @@ footer b{font-family:var(--serif);color:var(--papel);font-size:1.15rem}
 .chat-head b{font-family:var(--serif);font-size:1.05rem;display:block}
 .chat-head small{opacity:.85;font-size:.78rem}
 .chat-head button{margin-left:auto;background:none;border:0;color:var(--papel);font-size:1.4rem;cursor:pointer}
-.chat-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--papel)}
-.msg{max-width:85%;padding:10px 14px;border-radius:16px;font-size:.92rem;white-space:pre-line;animation:entra .25s ease}
-.msg.bot{background:var(--blanco);border:1px solid var(--borde);border-bottom-left-radius:4px;align-self:flex-start}
-.msg.yo{background:var(--terracota);color:#fff;border-bottom-right-radius:4px;align-self:flex-end}
-@keyframes entra{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.chips{display:flex;flex-wrap:wrap;gap:6px;align-self:flex-start}
-.chip{background:transparent;border:1.5px solid var(--verde);color:var(--verde);border-radius:999px;padding:6px 12px;font:500 .82rem var(--sans);cursor:pointer;text-align:left}
-.chip:hover{background:var(--verde);color:#fff}
-.chip.acc{border-color:var(--terracota);color:var(--terracota)}
-.chip.acc:hover{background:var(--terracota);color:#fff}
-.escribiendo{align-self:flex-start;font-size:.8rem;color:var(--tinta-2);font-style:italic}
-.chat-foot{display:flex;gap:8px;padding:12px;border-top:1px solid var(--borde);background:var(--blanco)}
-.chat-foot input{flex:1;border-radius:999px;padding:10px 16px}
-.chat-foot button{background:var(--terracota);color:#fff;border:0;border-radius:50%;width:44px;height:44px;font-size:1.1rem;cursor:pointer;flex-shrink:0}
+/* Widget n8n dentro del panel */
+#n8n-chat{flex:1;min-height:0;position:relative}
+#n8n-chat .chat-header{display:none}
+#n8n-chat input,#n8n-chat textarea{width:auto;background:var(--blanco)}
+:root{
+  --chat--color-primary:var(--terracota);
+  --chat--color-primary-shade-50:var(--terracota-2);
+  --chat--color-primary-shade-100:var(--terracota-2);
+  --chat--color-secondary:var(--verde);
+  --chat--color-secondary-shade-50:var(--verde);
+  --chat--color-white:var(--blanco);
+  --chat--color-light:var(--papel);
+  --chat--color-dark:var(--tinta);
+  --chat--font-family:var(--sans);
+  --chat--body--background:var(--papel);
+  --chat--footer--background:var(--blanco);
+  --chat--message--font-size:.92rem;
+  --chat--message--bot--background:var(--blanco);
+  --chat--message--bot--color:var(--tinta);
+  --chat--message--bot--border:1px solid var(--borde);
+  --chat--message--user--background:var(--terracota);
+  --chat--message--user--color:#fff;
+  --chat--message--border-radius:16px;
+  --chat--border-radius:0;
+}
 
 /* Responsive */
 @media (max-width:900px){
@@ -204,7 +215,7 @@ footer b{font-family:var(--serif);color:var(--papel);font-size:1.15rem}
         <h1>Cada libro es un <em>camino</em> que empieza en tus manos</h1>
         <p>Textos escolares, universitarios, literatura peruana y útiles de oficina. Te armamos la lista y la llevamos a tu casa, en Lima o en provincia.</p>
         <div class="hero-btns">
-          <button class="btn btn-prim" onclick="abrirChat()">💬 Pregúntale a Kusi</button>
+          <button class="btn btn-prim" onclick="abrirChat()">🤖 Pregúntale a Kusi</button>
           <a href="#catalogo" class="btn btn-sec">Ver catálogo</a>
         </div>
         <div class="datos">
@@ -350,20 +361,41 @@ footer b{font-family:var(--serif);color:var(--papel);font-size:1.15rem}
 
 <!-- CHATBOT -->
 <button class="chat-btn" id="chatBtn" onclick="abrirChat()" aria-label="Abrir chat">
-  <span class="av">🦙</span><span class="txt">¿Te ayudo?</span><span class="punto"></span>
+  <span class="av">🤖</span><span class="txt">¿Te ayudo?</span><span class="punto"></span>
 </button>
 <div class="chat" id="chat" role="dialog" aria-label="Chat con Kusi">
   <div class="chat-head">
-    <span class="av">🦙</span>
-    <div><b>Kusi</b><small>Asistente de Librerías Andinas · en línea</small></div>
+    <span class="av">🤖</span>
+    <div><b>Kusi</b><small>Asesor virtual de Librerías Andinas · en línea</small></div>
     <button onclick="cerrarChat()" aria-label="Cerrar chat">×</button>
   </div>
-  <div class="chat-body" id="chatBody"></div>
-  <form class="chat-foot" id="chatForm">
-    <input id="chatInput" placeholder="Escribe tu pregunta…" autocomplete="off">
-    <button type="submit" aria-label="Enviar">➤</button>
-  </form>
+  <div id="n8n-chat"></div>
 </div>
+
+<!-- Chatbot de n8n (agente con OpenAI + Google Sheets) -->
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet">
+<script type="module">
+  import { createChat } from "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js";
+  createChat({
+    webhookUrl: "https://andreefc28.app.n8n.cloud/webhook/c8d5f3b1-6b2e-4f8c-8d2b-4a7e9f3c2b58/chat",
+    target: "#n8n-chat",
+    mode: "fullscreen",
+    showWelcomeScreen: false,
+    loadPreviousSession: false,
+    defaultLanguage: "en",
+    initialMessages: [
+      "¡Hola! 👋 Soy Kusi 🤖, el asesor de Librerías Andinas 📚",
+      "¿Qué libro, autor o tema buscas? Te ayudo con precios, disponibilidad y tu compra."
+    ],
+    i18n: {
+      en: {
+        title: "", subtitle: "", footer: "",
+        getStarted: "Nueva conversación",
+        inputPlaceholder: "Escribe el título, autor o tema…"
+      }
+    }
+  });
+</script>
 
 <script>
 /* ================== CONFIGURACIÓN ================== */
@@ -373,150 +405,10 @@ const CONFIG = {
   correo:   "jorge.floresc@unmsm.edu.pe"
 };
 
-/* ================== 10 PREGUNTAS FRECUENTES ================== */
-const FAQ = [
-  { q:"¿Cuál es el horario de atención?", k:["horario","hora","abren","cierran","atienden","domingo","sabado","sábado"],
-    a:"🕘 Atendemos de lunes a sábado de 9:00 a. m. a 8:00 p. m. y los domingos de 10:00 a. m. a 2:00 p. m.\nPor WhatsApp respondemos todos los días." },
-  { q:"¿Dónde están ubicados?", k:["donde","dónde","ubica","direccion","dirección","sede","tienda","local","lima","cusco","huancayo"],
-    a:"📍 Tenemos 3 sedes:\n• Lima: Jr. Quilca 245, Cercado\n• Huancayo: Calle Real 812\n• Cusco: Av. El Sol 430" },
-  { q:"¿Hacen delivery y envíos a provincia?", k:["delivery","envio","envío","envian","envían","provincia","despacho","llega","shalom","olva"],
-    a:"🚚 ¡Sí! En Lima entregamos en 24 h (gratis desde S/ 150). A provincia enviamos por Olva o Shalom en 2 a 5 días hábiles." },
-  { q:"¿Qué métodos de pago aceptan?", k:["pago","pagar","yape","plin","tarjeta","transferencia","efectivo","visa"],
-    a:"💳 Aceptamos Yape, Plin, tarjetas Visa y Mastercard, transferencia bancaria (BCP, Interbank, BBVA) y efectivo en tienda." },
-  { q:"¿Arman listas escolares?", k:["lista","escolar","colegio","útiles","utiles","forrado","forrar","campaña"],
-    a:"🎒 Sí. Envíanos la foto de tu lista y te cotizamos en menos de 2 horas. Podemos entregarla forrada y etiquetada con el nombre del alumno." },
-  { q:"¿Tienen libros universitarios y de autores peruanos?", k:["universitario","universidad","autor","peruano","literatura","novela","vargas","arguedas","vallejo","ribeyro","derecho"],
-    a:"📚 Sí: textos de derecho, administración, ingeniería y salud, además de una sección completa de literatura peruana (Arguedas, Vallejo, Vargas Llosa, Ribeyro y autores actuales)." },
-  { q:"¿Puedo pedir un libro que no tengan?", k:["stock","pedido","especial","importar","no tienen","conseguir","encargo","agotado"],
-    a:"🔎 Claro. Hacemos pedidos especiales con la editorial o lo importamos. Demora entre 7 y 20 días según el título. Solo pedimos un adelanto del 30 %." },
-  { q:"¿Tienen descuentos para colegios o empresas?", k:["descuento","corporativ","empresa","institución","institucion","mayor","promoción","promocion","oferta","colegios"],
-    a:"🏫 Sí. Colegios, universidades, empresas y municipalidades tienen precios especiales desde 10 unidades. Déjame tus datos y un asesor te envía la propuesta." },
-  { q:"¿Cuál es la política de cambios y devoluciones?", k:["cambio","devolu","reclamo","garantía","garantia","fallado","libro de reclamaciones"],
-    a:"🔄 Puedes cambiar tu producto dentro de los 7 días con tu comprobante, si está en buen estado. Si llegó fallado, lo cambiamos sin costo. Contamos con Libro de Reclamaciones." },
-  { q:"¿Emiten boleta o factura?", k:["boleta","factura","ruc","comprobante","sunat","electrónica","electronica"],
-    a:"🧾 Sí, emitimos boleta y factura electrónica. Para factura solo necesitamos tu RUC y razón social." }
-];
-
-/* ================== LÓGICA DEL CHAT ================== */
+/* ================== VENTANA DEL CHAT ================== */
 const $ = id => document.getElementById(id);
-const body = $("chatBody");
-const historial = [];
-let modo = "libre";          // "libre" o pasos de captura de datos
-let lead = {};
-let iniciado = false;
-
-function abrirChat(){
-  $("chat").classList.add("abierto");
-  if(!iniciado){ iniciado = true; saludo(); }
-  setTimeout(()=>$("chatInput").focus(),100);
-}
+function abrirChat(){ $("chat").classList.add("abierto"); }
 function cerrarChat(){ $("chat").classList.remove("abierto"); }
-
-function burbuja(texto, quien){
-  const d = document.createElement("div");
-  d.className = "msg " + quien;
-  d.textContent = texto;
-  body.appendChild(d);
-  body.scrollTop = body.scrollHeight;
-}
-function botones(opciones){
-  const c = document.createElement("div");
-  c.className = "chips";
-  opciones.forEach(o=>{
-    const b = document.createElement("button");
-    b.className = "chip" + (o.acc ? " acc" : "");
-    b.textContent = o.t;
-    b.onclick = ()=>{ c.remove(); burbuja(o.t,"yo"); o.fn(); };
-    c.appendChild(b);
-  });
-  body.appendChild(c);
-  body.scrollTop = body.scrollHeight;
-}
-function bot(texto, opciones){
-  const e = document.createElement("div");
-  e.className = "escribiendo"; e.textContent = "Kusi está escribiendo…";
-  body.appendChild(e); body.scrollTop = body.scrollHeight;
-  setTimeout(()=>{ e.remove(); burbuja(texto,"bot"); if(opciones) botones(opciones); }, 550);
-}
-
-const menuFAQ = () => [
-  ...FAQ.map(f => ({ t:f.q, fn:()=>responder(f) })),
-  { t:"📩 Quiero que me contacten", acc:true, fn:iniciarLead }
-];
-const despues = () => [
-  { t:"Ver otras preguntas", fn:()=>bot("Estas son las preguntas más frecuentes:", menuFAQ()) },
-  { t:"📩 Quiero que me contacten", acc:true, fn:iniciarLead }
-];
-
-function saludo(){
-  bot("¡Hola! 👋 Soy Kusi, el asistente de Librerías Andinas.\n¿En qué te puedo ayudar? Elige una pregunta o escríbeme.", menuFAQ());
-}
-function responder(f){
-  historial.push(f.q);
-  bot(f.a, despues());
-}
-
-function normalizar(t){ return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""); }
-function buscar(texto){
-  const t = normalizar(texto);
-  let mejor = null, puntos = 0;
-  FAQ.forEach(f=>{
-    const p = f.k.filter(k => t.includes(normalizar(k))).length;
-    if(p > puntos){ puntos = p; mejor = f; }
-  });
-  return mejor;
-}
-
-/* Captura de datos */
-function iniciarLead(){
-  modo = "nombre"; lead = {};
-  bot("¡Perfecto! Te pido unos datos para que un asesor te contacte.\n¿Cuál es tu nombre?");
-}
-function pasoLead(t){
-  if(modo === "nombre"){
-    lead.nombre = t; modo = "telefono";
-    bot(`Gracias, ${t.split(" ")[0]}. ¿A qué número de celular te escribimos?`);
-  } else if(modo === "telefono"){
-    const num = t.replace(/\D/g,"");
-    if(num.length < 9){ bot("Parece que falta algún dígito. Escribe tu celular de 9 dígitos, por favor."); return; }
-    lead.telefono = num; modo = "mensaje";
-    bot("¿Qué libro o producto buscas? Cuéntame en una frase.");
-  } else if(modo === "mensaje"){
-    lead.mensaje = t; modo = "libre";
-    lead.tema = "Chatbot"; lead.correo = "";
-    lead.preguntas = historial.length ? historial.join(" | ") : "Ninguna";
-    bot("⏳ Enviando tus datos…");
-    enviarCorreo(lead)
-      .then(()=> bot("✅ ¡Listo! Recibimos tu consulta por correo.\nPara una respuesta más rápida, envíala también por WhatsApp:", opcionesWA()))
-      .catch(()=> bot("No pude enviar el correo en este momento, pero puedes enviarnos tu consulta por WhatsApp:", opcionesWA()));
-  }
-}
-function opcionesWA(){
-  return [
-    { t:"📱 Enviar por WhatsApp", acc:true, fn:()=>{ abrirWhatsApp(lead); bot("¡Gracias! Te responderemos muy pronto. 🦙", despues()); } },
-    { t:"Ver otras preguntas", fn:()=>bot("Aquí las tienes:", menuFAQ()) }
-  ];
-}
-
-$("chatForm").addEventListener("submit", e=>{
-  e.preventDefault();
-  const t = $("chatInput").value.trim();
-  if(!t) return;
-  $("chatInput").value = "";
-  burbuja(t,"yo");
-  if(modo !== "libre"){ pasoLead(t); return; }
-  if(/^(hola|buenas|buenos|hi)\b/i.test(normalizar(t))){ bot("¡Hola! 😊 ¿Sobre qué te gustaría saber?", menuFAQ()); return; }
-  if(/gracias/i.test(t)){ bot("¡Con gusto! Si necesitas algo más, aquí estoy. 📚", despues()); return; }
-  const f = buscar(t);
-  if(f){ historial.push(t); bot(f.a, despues()); }
-  else {
-    historial.push(t);
-    bot("Esa pregunta no la tengo en mi lista 🤔, pero un asesor puede ayudarte. ¿Quieres dejar tus datos?", [
-      { t:"📩 Sí, que me contacten", acc:true, fn:iniciarLead },
-      { t:"Ver preguntas frecuentes", fn:()=>bot("Estas son las más consultadas:", menuFAQ()) }
-    ]);
-  }
-});
 
 /* ================== ENVÍO A CORREO Y WHATSAPP ================== */
 // Correo vía FormSubmit (gratis, sin servidor). La 1.ª vez llega un correo de activación a CONFIG.correo.
